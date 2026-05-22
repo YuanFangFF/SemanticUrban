@@ -291,4 +291,4 @@ This work is partially supported by the Xi'an Jiaotong-Liverpool University Rese
 
 ## License
 
-The SemanticUrban dataset is released for **academic and non-commercial research use only**. Please contact the authors for any other use. (Update this section if you adopt a specific license, e.g., CC BY-NC 4.0.)
+The SemanticUrban dataset is released for **academic and non-commercial research use only**. Please contact the authors for any other use. 
