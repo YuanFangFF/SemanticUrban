@@ -2,6 +2,8 @@
 
 # SemanticUrban
 
+**English** | [简体中文](README.zh-CN.md)
+
 ### Towards Accurate Urban Scene Understanding using Point Clouds: The SemanticUrban Dataset
 
 A large-scale, high-resolution terrestrial laser scanning (TLS) point cloud dataset for urban scene semantic segmentation.
