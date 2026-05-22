@@ -49,7 +49,6 @@ Compared with existing TLS urban datasets, SemanticUrban offers:
 - [Download](#download)
 - [Data Format](#data-format)
 - [Preprocessing Details](#preprocessing-details)
-- [Getting Started](#getting-started)
 - [Benchmark Results](#benchmark-results)
 - [Citation](#citation)
 - [Contact](#contact)
@@ -88,7 +87,7 @@ Compared with existing TLS urban datasets, SemanticUrban offers:
 
 ## Semantic Classes
 
-The benchmark uses **23 valid semantic classes**. Raw label `0` denotes unannotated points (occluded or distant objects) and is ignored during training and evaluation. The training data loader maps raw labels `1-23` to training labels `0-22`, and maps raw label `0` to `ignore_index = -100`.
+The benchmark uses **23 valid semantic classes**. Raw label `0` denotes unannotated points (occluded or distant objects) and is ignored during training and evaluation. In the benchmark setup, raw labels `1-23` correspond to training labels `0-22`, while raw label `0` is treated as `ignore_index = -100`.
 
 | Raw label | Training label | Class name |
 |:---:|:---:|---|
@@ -167,7 +166,27 @@ Each scene is stored as five NumPy arrays:
 | `<scene>_segment.npy` | int | `[N]` | Semantic labels (raw `0` ignored; `1-23` valid classes) |
 | `<scene>_reidx.npy` | int64 | `[M]` | Inverse index from cropped dense points to voxelized points |
 
-> `<scene>_reidx.npy` is not required by all training scripts, but it is kept for completeness and for possible prediction back-projection to the dense point cloud.
+> `<scene>_reidx.npy` is kept for completeness and for possible prediction back-projection to the dense point cloud.
+
+A single scene can be read directly with NumPy:
+
+```python
+import numpy as np
+
+coord    = np.load("datasets/Univ/npy_05/<scene>_coord.npy")     # [N, 3] float32, XYZ
+color    = np.load("datasets/Univ/npy_05/<scene>_color.npy")     # [N, 3] float32, RGB in 0-255
+strength = np.load("datasets/Univ/npy_05/<scene>_strength.npy")  # [N]    float32, intensity
+segment  = np.load("datasets/Univ/npy_05/<scene>_segment.npy")   # [N]    semantic labels (0 ignored, 1-23 valid)
+```
+
+### Integrity check (optional)
+
+To verify the downloaded files, you can generate and compare SHA-256 checksums:
+
+```bash
+find datasets/Univ/npy_05 -type f -name "*.npy" | sort | xargs sha256sum > SemanticUrban_npy05_sha256.txt
+sha256sum datasets/Univ/Univ_*.txt >> SemanticUrban_npy05_sha256.txt
+```
 
 ## Preprocessing Details
 
@@ -178,67 +197,6 @@ The preprocessed package was generated from the raw TXT files by:
 3. Cropping points to `x, y` in `[-35, 35]`.
 4. Voxelizing with `voxel_size = 0.05 m`.
 5. Saving the `coord` / `color` / `strength` / `segment` / `reidx` arrays.
-
-## Getting Started
-
-### 1. Download and place the data
-
-Download the preprocessed package and place it under the repository root so that the final paths are:
-
-```
-Sem_seg_univ_ORI/datasets/Univ/npy_05
-Sem_seg_univ_ORI/datasets/Univ/Univ_train.txt
-Sem_seg_univ_ORI/datasets/Univ/Univ_val.txt
-Sem_seg_univ_ORI/datasets/Univ/Univ_test.txt
-```
-
-### 2. Prepare the shared-memory cache (OctFormer, PTv1, PTv2, MinkowskiNet)
-
-The default loader uses a `SharedArray` cache and expects `npy_05` at `datasets/Univ/npy_05`. Prepare the shared-memory cache before training. Around **30 GB** of shared memory is recommended.
-
-```bash
-conda activate octformer_new
-cd /path/to/Sem_seg_univ_ORI
-python datasets/Univ/shm.py
-```
-
-### 3. Configure training
-
-The main config is `parsers/config_Univ.py`. Relevant options:
-
-| Option | Value / Description |
-|---|---|
-| `--dataset` | `Univ` |
-| `--cache` | `true` |
-| `--use_rgb` | `true` or `false` |
-| `--voxel_size` | `0.05` |
-| `--sem_num` | `23` |
-
-### 4. Easy-KPConv
-
-For Easy-KPConv, the config is:
-
-```
-Easy-KPConv-master/examples/scene_segmentation/config.py
-```
-
-This config currently points to absolute dataset paths. Update the following fields to your local SemanticUrban location:
-
-```python
-cfg.data.dataset_dir
-cfg.data.train_list
-cfg.data.val_list
-cfg.data.test_list
-```
-
-### 5. Verify integrity (optional)
-
-Generate and verify checksums of the downloaded files:
-
-```bash
-find datasets/Univ/npy_05 -type f -name "*.npy" | sort | xargs sha256sum > SemanticUrban_npy05_sha256.txt
-sha256sum datasets/Univ/Univ_*.txt >> SemanticUrban_npy05_sha256.txt
-```
 
 ## Benchmark Results
 
@@ -291,4 +249,4 @@ This work is partially supported by the Xi'an Jiaotong-Liverpool University Rese
 
 ## License
 
-The SemanticUrban dataset is released for **academic and non-commercial research use only**. Please contact the authors for any other use. 
+The SemanticUrban dataset is released for **academic and non-commercial research use only**. Please contact the authors for any other use.
