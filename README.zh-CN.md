@@ -132,7 +132,7 @@
 | 资源 | 大小 | 链接 |
 |---|---|---|
 | 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [Google Drive](https://drive.google.com/file/d/1kHaYAdplgZuAbgPbEXGBAmsQnfj_h-WC/view?usp=sharing) |
-| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | 百度网盘：`<BAIDU_LINK>` &nbsp; 提取码：`<CODE>` |
+| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [百度网盘](https://pan.baidu.com/s/1ygEiIN4BA3CWtYsEDUkxpw?pwd=juqu) &nbsp; 提取码：`juqu` |
 
 ### 原始数据（可选）
 
