@@ -132,7 +132,7 @@ We release the **preprocessed benchmark package** (voxel size 0.05 m). All resul
 | Resource | Size | Link |
 |---|---|---|
 | Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Google Drive](https://drive.google.com/file/d/1kHaYAdplgZuAbgPbEXGBAmsQnfj_h-WC/view?usp=sharing) |
-| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | Baidu Cloud: `<BAIDU_LINK>` &nbsp; Extraction code: `<CODE>` |
+| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Baidu Cloud](https://pan.baidu.com/s/1ygEiIN4BA3CWtYsEDUkxpw?pwd=juqu) &nbsp; Extraction code: `juqu` |
 
 ### Raw data (optional)
 
