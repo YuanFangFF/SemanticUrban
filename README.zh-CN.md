@@ -145,7 +145,7 @@
 | 资源 | 大小 | 链接 |
 |---|---|---|
 | 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [Google Drive](https://drive.google.com/file/d/1fJ5kdstFQScT6Buv46qM-zR1h_lQdy8H/view?usp=sharing) |
-| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [百度网盘](https://pan.baidu.com/s/<UPDATED_SHARE_ID>?pwd=<CODE>) &nbsp; 提取码：`<CODE>` |
+| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [百度网盘](https://pan.baidu.com/s/1JpMlncciIs-2Gm7UjR2-Dg?pwd=n6wz) &nbsp; 提取码：`<n6wz>` |
 ### 原始数据（可选）
 
 **原始 TXT 数据**（约 **249.9 GB**）**不** 包含在默认的基准版本中。如需申请原始数据，请发送邮件至通讯作者 **lei.fan@xjtlu.edu.cn**，作者会尽快回复。
