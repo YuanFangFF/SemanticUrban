@@ -11,7 +11,7 @@ A large-scale, high-resolution terrestrial laser scanning (TLS) point cloud data
 [![Paper](https://img.shields.io/badge/Paper-ESWA%202026-b31b1b.svg)](https://www.sciencedirect.com/science/article/abs/pii/S0957417426018610)
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.eswa.2026.132949-blue.svg)](https://doi.org/10.1016/j.eswa.2026.132949)
 [![Project Page](https://img.shields.io/badge/Project-Page-success.svg)](https://zhuqinfeng1999.github.io/SemanticUrban/)
-[![Dataset](https://img.shields.io/badge/Download-Google%20Drive-4285F4.svg)](https://drive.google.com/file/d/1kHaYAdplgZuAbgPbEXGBAmsQnfj_h-WC/view?usp=sharing)
+[![Dataset](https://img.shields.io/badge/Download-Google%20Drive-4285F4.svg)](https://drive.google.com/file/d/1fJ5kdstFQScT6Buv46qM-zR1h_lQdy8H/view?usp=sharing)
 ![Scenes](https://img.shields.io/badge/Scenes-150-orange.svg)
 ![Points](https://img.shields.io/badge/Points-~4B-orange.svg)
 ![Classes](https://img.shields.io/badge/Classes-23-orange.svg)
@@ -125,14 +125,28 @@ The benchmark uses **23 valid semantic classes**. Raw label `0` denotes unannota
 <em>Example point clouds: intensity (left), RGB (middle), and class labels (right).</em>
 </div>
 
+
 ## Download
 
 We release the **preprocessed benchmark package** (voxel size 0.05 m). All results reported in the paper can be reproduced from this package alone. The decompressed size is approximately **38.8 GB**.
 
+### Dataset update notice
+
+The `npy_05` download links below were updated on **22 June 2026**. A previous uploaded package contained a preprocessing error in some semantic label files: the old script read auxiliary columns after the semantic label column, and when those auxiliary columns contained `NaN` values, it incorrectly reset valid labels in column 8 to `0`. The original raw TXT annotations are correct.
+
+We regenerated the complete `npy_05` package from the original TXT files by reading only `x, y, z, r, g, b, strength, label`. In the previous uploaded package, **36** `<scene>_segment.npy` files were affected; the coordinate, color, strength, and re-index files were unchanged. If you downloaded `npy_05` before this update, please download the corrected package below.
+
+<details>
+<summary>Affected segment files in the previous uploaded npy_05 package</summary>
+
+`Job_010_002`, `Job_010_005`, `Job_010_008`, `Job_010_032`, `Job_010_042`, `Job_011_016`, `Job_011_023`, `Job_011_031`, `Job_012_007`, `Job_012_010`, `Job_012_019`, `Job_012_022`, `Job_012_025`, `Job_012_042`, `Job_013_001`, `Job_013_007`, `Job_013_010`, `Job_014_014`, `Job_014_018`, `Job_014_024`, `Job_084_025`, `Job_084_027`, `Job_084_032`, `Job_084_034`, `Job_084_058`, `Job_084_064`, `Job_084_075`, `Job_084_081`, `Job_085_039`, `Job_085_061`, `Job_085_080`, `Ning_I_010`, `Ning_I_012`, `Ning_I_031`, `Ning_I_037`, `Ning_I_049`
+
+</details>
+
 | Resource | Size | Link |
 |---|---|---|
-| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Google Drive](https://drive.google.com/file/d/1kHaYAdplgZuAbgPbEXGBAmsQnfj_h-WC/view?usp=sharing) |
-| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Baidu Cloud](https://pan.baidu.com/s/1ygEiIN4BA3CWtYsEDUkxpw?pwd=juqu) &nbsp; Extraction code: `juqu` |
+| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Google Drive](https://drive.google.com/file/d/1fJ5kdstFQScT6Buv46qM-zR1h_lQdy8H/view?usp=sharing) |
+| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Baidu Cloud](https://pan.baidu.com/s/<UPDATED_SHARE_ID>?pwd=<CODE>) &nbsp; Extraction code: `<CODE>` |
 
 ### Raw data (optional)
 
@@ -194,11 +208,12 @@ sha256sum datasets/Univ/Univ_*.txt >> SemanticUrban_npy05_sha256.txt
 
 The preprocessed package was generated from the raw TXT files by:
 
-1. Reading columns `x, y, z, r, g, b, strength, label`.
-2. Replacing `NaN` values with `0`, and assigning `NaN` labels to `0`.
-3. Cropping points to `x, y` in `[-35, 35]`.
-4. Voxelizing with `voxel_size = 0.05 m`.
-5. Saving the `coord` / `color` / `strength` / `segment` / `reidx` arrays.
+1. Reading only the first eight columns: `x, y, z, r, g, b, strength, label`.
+2. Ignoring any auxiliary columns after the semantic label column.
+3. Replacing `NaN` values within the loaded columns with `0`, and assigning `NaN` labels to `0`.
+4. Cropping points to `x, y` in `[-35, 35]`.
+5. Voxelizing with `voxel_size = 0.05 m`.
+6. Saving the `coord` / `color` / `strength` / `segment` / `reidx` arrays.
 
 ## Benchmark Results
 
