@@ -11,7 +11,7 @@
 [![Paper](https://img.shields.io/badge/Paper-ESWA%202026-b31b1b.svg)](https://www.sciencedirect.com/science/article/abs/pii/S0957417426018610)
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.eswa.2026.132949-blue.svg)](https://doi.org/10.1016/j.eswa.2026.132949)
 [![Project Page](https://img.shields.io/badge/Project-Page-success.svg)](https://zhuqinfeng1999.github.io/SemanticUrban/)
-[![Dataset](https://img.shields.io/badge/Download-Google%20Drive-4285F4.svg)](https://drive.google.com/file/d/1kHaYAdplgZuAbgPbEXGBAmsQnfj_h-WC/view?usp=sharing)
+[![Dataset](https://img.shields.io/badge/Download-Google%20Drive-4285F4.svg)](https://drive.google.com/file/d/1fJ5kdstFQScT6Buv46qM-zR1h_lQdy8H/view?usp=sharing)
 ![Scenes](https://img.shields.io/badge/Scenes-150-orange.svg)
 ![Points](https://img.shields.io/badge/Points-~4B-orange.svg)
 ![Classes](https://img.shields.io/badge/Classes-23-orange.svg)
@@ -129,11 +129,23 @@
 
 我们发布的是 **预处理基准版本（preprocessed benchmark package）**（体素大小 0.05 m）。论文中报告的全部结果均可仅凭该版本复现。解压后的大小约为 **38.8 GB**。
 
+### 数据集更新说明
+
+以下 `npy_05` 下载链接已于 **2026 年 6 月 22 日** 更新。此前上传的版本中，部分语义标签文件存在预处理错误：旧脚本读取了语义标签列之后的辅助列，当这些辅助列包含 `NaN` 时，会错误地将第 8 列中的有效语义标签重置为 `0`。原始 TXT 标注本身是正确的。
+
+我们已从原始 TXT 文件重新生成完整的 `npy_05` 数据包，预处理时仅读取 `x, y, z, r, g, b, strength, label` 这 8 列。此前上传版本中共有 **36** 个 `<scene>_segment.npy` 文件受到影响；坐标、颜色、强度与重索引文件未受影响。如果你在此次更新前下载过 `npy_05`，请重新下载下方修正后的版本。
+
+<details>
+<summary>此前上传的 npy_05 包中受影响的 segment 文件</summary>
+
+`Job_010_002`, `Job_010_005`, `Job_010_008`, `Job_010_032`, `Job_010_042`, `Job_011_016`, `Job_011_023`, `Job_011_031`, `Job_012_007`, `Job_012_010`, `Job_012_019`, `Job_012_022`, `Job_012_025`, `Job_012_042`, `Job_013_001`, `Job_013_007`, `Job_013_010`, `Job_014_014`, `Job_014_018`, `Job_014_024`, `Job_084_025`, `Job_084_027`, `Job_084_032`, `Job_084_034`, `Job_084_058`, `Job_084_064`, `Job_084_075`, `Job_084_081`, `Job_085_039`, `Job_085_061`, `Job_085_080`, `Ning_I_010`, `Ning_I_012`, `Ning_I_031`, `Ning_I_037`, `Ning_I_049`
+
+</details>
+
 | 资源 | 大小 | 链接 |
 |---|---|---|
-| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [Google Drive](https://drive.google.com/file/d/1kHaYAdplgZuAbgPbEXGBAmsQnfj_h-WC/view?usp=sharing) |
-| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [百度网盘](https://pan.baidu.com/s/1ygEiIN4BA3CWtYsEDUkxpw?pwd=juqu) &nbsp; 提取码：`juqu` |
-
+| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [Google Drive](https://drive.google.com/file/d/1fJ5kdstFQScT6Buv46qM-zR1h_lQdy8H/view?usp=sharing) |
+| 预处理基准版本（`npy_05`） | 约 38.8 GB（解压后） | [百度网盘](https://pan.baidu.com/s/<UPDATED_SHARE_ID>?pwd=<CODE>) &nbsp; 提取码：`<CODE>` |
 ### 原始数据（可选）
 
 **原始 TXT 数据**（约 **249.9 GB**）**不** 包含在默认的基准版本中。如需申请原始数据，请发送邮件至通讯作者 **lei.fan@xjtlu.edu.cn**，作者会尽快回复。
@@ -194,11 +206,12 @@ sha256sum datasets/Univ/Univ_*.txt >> SemanticUrban_npy05_sha256.txt
 
 预处理版本由原始 TXT 文件按如下步骤生成：
 
-1. 读取 `x, y, z, r, g, b, strength, label` 列。
-2. 将 `NaN` 数值替换为 `0`，并将 `NaN` 标签置为 `0`。
-3. 将点裁剪至 `x, y` 位于 `[-35, 35]` 范围内。
-4. 以 `voxel_size = 0.05 m` 进行体素化。
-5. 保存 `coord` / `color` / `strength` / `segment` / `reidx` 数组。
+1. 仅读取前 8 列：`x, y, z, r, g, b, strength, label`。
+2. 忽略语义标签列之后的所有辅助列。
+3. 将已读取列中的 `NaN` 数值替换为 `0`，并将 `NaN` 标签置为 `0`。
+4. 将点裁剪至 `x, y` 位于 `[-35, 35]` 范围内。
+5. 以 `voxel_size = 0.05 m` 进行体素化。
+6. 保存 `coord` / `color` / `strength` / `segment` / `reidx` 数组。
 
 ## 基准测试结果
 
