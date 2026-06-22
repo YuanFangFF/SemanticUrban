@@ -146,7 +146,7 @@ We regenerated the complete `npy_05` package from the original TXT files by read
 | Resource | Size | Link |
 |---|---|---|
 | Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Google Drive](https://drive.google.com/file/d/1fJ5kdstFQScT6Buv46qM-zR1h_lQdy8H/view?usp=sharing) |
-| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Baidu Cloud](https://pan.baidu.com/s/<UPDATED_SHARE_ID>?pwd=<CODE>) &nbsp; Extraction code: `<CODE>` |
+| Preprocessed benchmark (`npy_05`) | ~38.8 GB (decompressed) | [Baidu Cloud](https://pan.baidu.com/s/1JpMlncciIs-2Gm7UjR2-Dg?pwd=n6wz) &nbsp; Extraction code: `<n6wz>` |
 
 ### Raw data (optional)
 
