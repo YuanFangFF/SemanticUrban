@@ -15,6 +15,7 @@
 ![Scenes](https://img.shields.io/badge/Scenes-150-orange.svg)
 ![Points](https://img.shields.io/badge/Points-~4B-orange.svg)
 ![Classes](https://img.shields.io/badge/Classes-23-orange.svg)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 </div>
 
@@ -262,6 +263,18 @@ sha256sum datasets/Univ/Univ_*.txt >> SemanticUrban_npy05_sha256.txt
 
 本工作部分由西交利物浦大学研究发展基金（项目编号 REF-21-01-003）以及西交利物浦大学研究生科研奖学金（项目编号 PGRS2006010）资助。
 
+## 免责声明
+
+SemanticUrban 数据集采集自公共环境中的真实城市场景，可能包含受第三方权利约束的内容，包括但不限于出现在公共空间中的个人信息或肖像、车辆、建筑物、标识及其他物体。本数据集由作者采集并发布，仅供学术与非商业研究使用。
+
+作者不就数据集或其任何部分可用于商业用途作出任何陈述或保证。由于部分场景可能包含尚未获得商业使用所需权利的数据，对数据集的任何商业使用都可能引发潜在的法律责任，包括但不限于隐私、个人信息保护以及知识产权方面的问题。因此，严禁将本数据集用于任何商业用途。
+
+本数据集按“现状”提供，不附带任何明示或暗示的保证。用户须自行确保其对数据集的使用符合所有适用的法律法规。对于因使用本数据集而引起的任何索赔、损害或其他后果，作者及其所属机构概不承担责任。
+
 ## 许可协议
 
-SemanticUrban 数据集 **仅供学术与非商业研究使用**。如需其他用途，请联系作者。
+SemanticUrban 数据集采用 [知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) 进行许可。
+
+**本数据集仅供学术与非商业研究使用，严禁任何形式的商业用途。** 在本协议下，您可以出于非商业目的自由地共享和修改数据，但需满足以下条件：（1）给予适当署名并引用我们的论文；（2）不得将数据用于商业目的；（3）对数据的任何修改或衍生作品须以相同的协议进行分发。
+
+任何商业用途，包括但不限于出售数据、利用数据开发、训练或评估商业产品或服务，以及任何以商业利益或经济报酬为目的或导向的使用，均须事先获得作者的明确书面许可。如需商业授权，请联系 lei.fan@xjtlu.edu.cn。
