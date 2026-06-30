@@ -15,6 +15,7 @@ A large-scale, high-resolution terrestrial laser scanning (TLS) point cloud data
 ![Scenes](https://img.shields.io/badge/Scenes-150-orange.svg)
 ![Points](https://img.shields.io/badge/Points-~4B-orange.svg)
 ![Classes](https://img.shields.io/badge/Classes-23-orange.svg)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 </div>
 
@@ -264,6 +265,18 @@ Authors: Yuan Fang, Qinfeng Zhu, Yuanzhi Cai, Lei Fan.
 
 This work is partially supported by the Xi'an Jiaotong-Liverpool University Research Enhancement Fund (grant number REF-21-01-003) and the Xi'an Jiaotong-Liverpool University Postgraduate Research Scholarship (grant number PGRS2006010).
 
+## Disclaimer
+
+The SemanticUrban dataset was acquired from real-world urban scenes in public environments and may contain elements that are subject to third-party rights, including but not limited to the personal information or likeness of individuals, vehicles, buildings, signage, and other objects appearing in public spaces. The dataset has been collected and released by the authors solely for academic and non-commercial research purposes.
+
+The authors make no representations or warranties that the dataset, or any portion of it, is cleared for commercial use. Because certain scenes may contain data for which the rights necessary for commercial exploitation have not been obtained, any commercial use of the dataset may give rise to potential legal liabilities, including but not limited to privacy, personal data protection, and intellectual property concerns. For this reason, commercial use of the dataset is strictly prohibited.
+
+The dataset is provided "as is" without warranty of any kind, express or implied. Users are solely responsible for ensuring that their use of the dataset complies with all applicable laws and regulations. The authors and their affiliated institutions accept no liability for any claims, damages, or other consequences arising from the use of the dataset.
+
 ## License
 
-The SemanticUrban dataset is released for **academic and non-commercial research use only**. Please contact the authors for any other use.
+The SemanticUrban dataset is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+**This dataset is provided strictly for academic and non-commercial research purposes only. Commercial use of any kind is prohibited.** Under this license you are free to share and adapt the data for non-commercial purposes, provided that you (1) give appropriate credit and cite our paper, (2) do not use the data for commercial purposes, and (3) distribute any derivative works under the same license.
+
+Any commercial use, including but not limited to selling the data, using it to develop, train, or evaluate commercial products or services, or any use directed toward commercial advantage or monetary compensation, requires explicit prior written permission from the authors. For commercial licensing inquiries, please contact lei.fan@xjtlu.edu.cn.
